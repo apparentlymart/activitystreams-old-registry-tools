@@ -1,0 +1,24 @@
+[% WRAPPER "page.tt"
+    page_title = spec.title
+%]
+
+[% IF spec.is_draft %]
+<aside class="warning">
+<p>This spec is currently a draft. Its registry
+information is subject to change.</p>
+</aside>
+[% END %]
+
+[% IF verbs.size %]
+<section>
+<h2>Verbs</h2>
+<p>The following verbs are defined by this specification:</p>
+<ul>
+[% FOREACH verb IN verbs %]
+<li><a href="[% verb.desc_url | html %]">[% verb.name | html %]</a> - [% verb.description | html %]</li>
+[% END %]
+</ul>
+</section>
+[% END %]
+
+[% END %]

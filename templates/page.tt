@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>[% page_title | html %] - Activity Streams Registry</title>
+<base href="/">
+</head>
+<body>
+<header>
+<h1>[% page_title | html %]</h1>
+</header>
+
+<section id="body">
+[% content %]
+</section>
+
+</body>
+</html>

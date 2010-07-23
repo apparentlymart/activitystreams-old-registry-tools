@@ -1,0 +1,6 @@
+<ul>
+[% FOREACH spec IN specs %]
+<li><a href="[% spec.index_url | html %]">[% spec.title | html %]</a></li>
+[% END %]
+</ul>
+
