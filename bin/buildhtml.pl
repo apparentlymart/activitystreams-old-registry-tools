@@ -80,6 +80,44 @@ my $registry = ASRegistry->from_source_dir($source_dir);
     }
 }
 
+# Whole-registry index pages
+{
+    my $object_types = [ map { term_summary_for_template($_) } @{$registry->object_types} ];
+
+    my $vars = {};
+    $vars->{object_types} = $object_types;
+
+    my $fn = "object_types";
+    build_page($fn, 'object_types.tt', $vars);
+}
+{
+    my $verbs = [ map { term_summary_for_template($_) } @{$registry->verbs} ];
+
+    my $vars = {};
+    $vars->{verbs} = $verbs;
+
+    my $fn = "verbs";
+    build_page($fn, 'verbs.tt', $vars);
+}
+{
+    my $activity_components = [ map { component_summary_for_template($_) } @{$registry->activity_components} ];
+
+    my $vars = {};
+    $vars->{components} = $activity_components;
+
+    my $fn = "activity_components";
+    build_page($fn, 'activity_components.tt', $vars);
+}
+{
+    my $object_components = [ map { component_summary_for_template($_) } @{$registry->object_components} ];
+
+    my $vars = {};
+    $vars->{components} = $object_components;
+
+    my $fn = "object_components";
+    build_page($fn, 'object_components.tt', $vars);
+}
+
 sub spec_summary_for_template {
     my ($spec) = @_;
 
@@ -102,6 +140,7 @@ sub term_summary_for_template {
     $ret->{spec_url} = $verb->spec_url;
     $ret->{is_draft} = $verb->is_draft;
     $ret->{description} = $verb->description;
+    $ret->{spec} = spec_summary_for_template($verb->spec);
     return $ret;
 }
 
@@ -117,6 +156,7 @@ sub component_summary_for_template {
     $ret->{spec_url} = $component->spec_url;
     $ret->{is_draft} = $component->is_draft;
     $ret->{description} = $component->description;
+    $ret->{spec} = spec_summary_for_template($component->spec);
     return $ret;
 }
 

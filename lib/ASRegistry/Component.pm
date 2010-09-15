@@ -73,5 +73,9 @@ sub is_draft {
     return $_[0]->spec->is_draft;
 }
 
+sub date {
+    return $_[0]->spec->date;
+}
+
 1;
 

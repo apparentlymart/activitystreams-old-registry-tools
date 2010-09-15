@@ -43,4 +43,31 @@ sub specs {
     return $_[0]->{specs};
 }
 
+sub _combine_specs {
+    my ($self, $method) = @_;
+
+    my @ret;
+    foreach my $spec (@{$self->specs}) {
+        push @ret, @{$spec->$method};
+    }
+    @ret = sort { $a->name cmp $b->name || $a->date cmp $b->date } @ret;
+    return \@ret;
+}
+
+sub object_types {
+    return $_[0]->_combine_specs("object_types");
+}
+
+sub verbs {
+    return $_[0]->_combine_specs("verbs");
+}
+
+sub object_components {
+    return $_[0]->_combine_specs("object_components");
+}
+
+sub activity_components {
+    return $_[0]->_combine_specs("activity_components");
+}
+
 1;

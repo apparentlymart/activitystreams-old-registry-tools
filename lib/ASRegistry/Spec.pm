@@ -22,6 +22,7 @@ sub from_dict {
     $self->{title} = $dict->{title};
     $self->{specification_url} = $dict->{specification_url};
     $self->{status} = $dict->{status} || 'published';
+    $self->{date} = $dict->{date} || '0000-00-00';
 
     my $verbs = $self->{verbs} = [];
     if (my $verb_dicts = $dict->{verbs}) {
@@ -72,6 +73,10 @@ sub status {
 
 sub is_draft {
     return $_[0]->{status} eq 'draft' ? 1 : 0;
+}
+
+sub date {
+    return $_[0]->{date};
 }
 
 sub verbs {
