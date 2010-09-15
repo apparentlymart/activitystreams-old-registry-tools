@@ -118,6 +118,11 @@ my $registry = ASRegistry->from_source_dir($source_dir);
     build_page($fn, 'object_components.tt', $vars);
 }
 
+# The home page
+{
+    build_page(".", 'home.tt', {});
+}
+
 # Copy over the static media files
 {
     mkdir("$target_dir/media");
