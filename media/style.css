@@ -13,6 +13,10 @@ body, td, th {
 
 a {
     color: rgb(1, 88, 193);
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
 }
 
 header {
@@ -95,4 +99,17 @@ aside.warning {
 }
 aside.warning p {
     margin: 0;
+}
+
+td.draft a::before {
+    content: "draft";
+    font-size: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    background: #ee0000;
+    display: inline-block;
+    margin-right: 8px;
+    padding: 2px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
 }
