@@ -1,11 +1,9 @@
 [% WRAPPER "page.tt"
-    page_title = All Registered Specifications
+    page_title = "Registered Specifications"
 %]
 
-[% USE Dumper %]
-
 <section>
-<h2>Published Specifications</h2>
+<h3>Published Specifications</h3>
 
 [% INCLUDE "modules/specs-list.tt"
     specs = specs.published
@@ -14,7 +12,7 @@
 </section>
 
 <section>
-<h2>Draft Specifications</h2>
+<h3>Draft Specifications</h3>
 
 <aside class="warning">
 <p>Since these specifications are still in draft, their

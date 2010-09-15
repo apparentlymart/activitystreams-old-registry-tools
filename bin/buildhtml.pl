@@ -118,6 +118,12 @@ my $registry = ASRegistry->from_source_dir($source_dir);
     build_page($fn, 'object_components.tt', $vars);
 }
 
+# Copy over the static media files
+{
+    mkdir("$target_dir/media");
+    system('cp', '-r', glob("$FindBin::Bin/../media/*"), "$target_dir/media");
+}
+
 sub spec_summary_for_template {
     my ($spec) = @_;
 
@@ -126,6 +132,7 @@ sub spec_summary_for_template {
     $ret->{identifier} = $spec->identifier;
     $ret->{index_url} = "specs/".$spec->identifier."/";
     $ret->{is_draft} = $spec->is_draft;
+    $ret->{date} = $spec->date;
     return $ret;
 }
 

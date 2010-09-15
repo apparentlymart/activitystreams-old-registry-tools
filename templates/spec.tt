@@ -11,7 +11,7 @@ information is subject to change.</p>
 
 [% IF verbs.size %]
 <section>
-<h2>Verbs</h2>
+<h3>Verbs</h3>
 <p>The following verbs are defined by this specification:</p>
 <table>
 <thead>
@@ -23,10 +23,10 @@ information is subject to change.</p>
 </thead>
 <tbody>
 [% FOREACH verb IN verbs %]
-<tr>
-<td><a href="[% verb.spec_url | html %]">[% verb.name | html %]</a></td>
-<td><tt>[% verb.identifier | html %]</tt></td>
-<td>[% verb.description | html %]</td>
+<tr class="[% IF loop.index % 2 == 1 %]even[% ELSE %]odd[% END %]">
+<td class="termname"><a href="[% verb.spec_url | html %]">[% verb.name | html %]</a></td>
+<td class="termidentifier"><tt>[% verb.identifier | html %]</tt></td>
+<td class="termdesc">[% verb.description | html %]</td>
 </tr>
 [% END %]
 </tbody>
@@ -36,7 +36,7 @@ information is subject to change.</p>
 
 [% IF object_types.size %]
 <section>
-<h2>Object Types</h2>
+<h3>Object Types</h3>
 <p>The following object types are defined by this specification:</p>
 <table>
 <thead>
@@ -48,10 +48,10 @@ information is subject to change.</p>
 </thead>
 <tbody>
 [% FOREACH object_type IN object_types %]
-<tr>
-<td><a href="[% object_type.spec_url | html %]">[% object_type.name | html %]</a></td>
-<td><tt>[% object_type.identifier | html %]</tt></td>
-<td>[% object_type.description | html %]</td>
+<tr class="[% IF loop.index % 2 == 1 %]even[% ELSE %]odd[% END %]">
+<td class="termname"><a href="[% object_type.spec_url | html %]">[% object_type.name | html %]</a></td>
+<td class="termidentifier"><tt>[% object_type.identifier | html %]</tt></td>
+<td class="termspec">[% object_type.description | html %]</td>
 </tr>
 [% END %]
 </tbody>
@@ -61,7 +61,7 @@ information is subject to change.</p>
 
 [% IF activity_components.size %]
 <section>
-<h2>Activity Components</h2>
+<h3>Activity Components</h3>
 <p>The following activity components are defined by this specification:</p>
 <table>
 <thead>
@@ -73,10 +73,10 @@ information is subject to change.</p>
 </thead>
 <tbody>
 [% FOREACH component IN activity_components %]
-<tr>
-<td><a href="[% component.spec_url | html %]">[% component.name | html %]</a></td>
-<td>[% IF component.json_property_name %]<tt><a href="[% component.json_spec_url %]">[% component.json_property_name | html %]</a></tt>[% END %]</td>
-<td>[% component.description | html %]</td>
+<tr class="[% IF loop.index % 2 == 1 %]even[% ELSE %]odd[% END %]">
+<td class="componentname"><a href="[% component.spec_url | html %]">[% component.name | html %]</a></td>
+<td class="componentjson">[% IF component.json_property_name %]<tt><a href="[% component.json_spec_url %]">[% component.json_property_name | html %]</a></tt>[% END %]</td>
+<td class="componentdesc">[% component.description | html %]</td>
 </tr>
 [% END %]
 </tbody>
@@ -87,7 +87,7 @@ information is subject to change.</p>
 
 [% IF object_components.size %]
 <section>
-<h2>Object Components</h2>
+<h3>Object Components</h3>
 <p>The following object components are defined by this specification:</p>
 <table>
 <thead>
@@ -99,10 +99,10 @@ information is subject to change.</p>
 </thead>
 <tbody>
 [% FOREACH component IN object_components %]
-<tr>
-<td><a href="[% component.spec_url | html %]">[% component.name | html %]</a></td>
-<td>[% IF component.json_property_name %]<tt><a href="[% component.json_spec_url %]">[% component.json_property_name | html %]</a></tt>[% END %]</td>
-<td>[% component.description | html %]</td>
+<tr class="[% IF loop.index % 2 == 1 %]even[% ELSE %]odd[% END %]">
+<td class="componentname"><a href="[% component.spec_url | html %]">[% component.name | html %]</a></td>
+<td class="componentjson">[% IF component.json_property_name %]<tt><a href="[% component.json_spec_url %]">[% component.json_property_name | html %]</a></tt>[% END %]</td>
+<td class="componentdesc">[% component.description | html %]</td>
 </tr>
 [% END %]
 </tbody>
