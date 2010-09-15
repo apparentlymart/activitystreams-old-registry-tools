@@ -1,11 +1,11 @@
 
 =head1 NAME
 
-ASRegistry::Verb - Represents the definition of a verb in the registry.
+ASRegistry::Term - Represents the definition of a verb or object type in the registry.
 
 =cut
 
-package ASRegistry::Verb;
+package ASRegistry::Term;
 
 use strict;
 use warnings;

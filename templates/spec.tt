@@ -13,12 +13,102 @@ information is subject to change.</p>
 <section>
 <h2>Verbs</h2>
 <p>The following verbs are defined by this specification:</p>
-<ul>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Identifier</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
 [% FOREACH verb IN verbs %]
-<li><a href="[% verb.desc_url | html %]">[% verb.name | html %]</a> - [% verb.description | html %]</li>
+<tr>
+<td><a href="[% verb.spec_url | html %]">[% verb.name | html %]</a></td>
+<td><tt>[% verb.identifier | html %]</tt></td>
+<td>[% verb.description | html %]</td>
+</tr>
 [% END %]
-</ul>
+</tbody>
+</table>
 </section>
 [% END %]
+
+[% IF object_types.size %]
+<section>
+<h2>Object Types</h2>
+<p>The following object types are defined by this specification:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Identifier</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+[% FOREACH object_type IN object_types %]
+<tr>
+<td><a href="[% object_type.spec_url | html %]">[% object_type.name | html %]</a></td>
+<td><tt>[% object_type.identifier | html %]</tt></td>
+<td>[% object_type.description | html %]</td>
+</tr>
+[% END %]
+</tbody>
+</table>
+</section>
+[% END %]
+
+[% IF activity_components.size %]
+<section>
+<h2>Activity Components</h2>
+<p>The following activity components are defined by this specification:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>JSON Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+[% FOREACH component IN activity_components %]
+<tr>
+<td><a href="[% component.spec_url | html %]">[% component.name | html %]</a></td>
+<td>[% IF component.json_property_name %]<tt><a href="[% component.json_spec_url %]">[% component.json_property_name | html %]</a></tt>[% END %]</td>
+<td>[% component.description | html %]</td>
+</tr>
+[% END %]
+</tbody>
+</table>
+</section>
+[% END %]
+
+
+[% IF object_components.size %]
+<section>
+<h2>Object Components</h2>
+<p>The following object components are defined by this specification:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>JSON Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+[% FOREACH component IN object_components %]
+<tr>
+<td><a href="[% component.spec_url | html %]">[% component.name | html %]</a></td>
+<td>[% IF component.json_property_name %]<tt><a href="[% component.json_spec_url %]">[% component.json_property_name | html %]</a></tt>[% END %]</td>
+<td>[% component.description | html %]</td>
+</tr>
+[% END %]
+</tbody>
+</table>
+</section>
+[% END %]
+
 
 [% END %]

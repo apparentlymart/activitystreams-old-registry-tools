@@ -49,8 +49,7 @@ my $registry = ASRegistry->from_source_dir($source_dir);
     build_page('specs', 'specs.tt', $vars);
 }
 
-# Individual Spec index pages and their child
-# description pages.
+# Individual Spec index pages.
 {
     foreach my $spec (@{$registry->specs}) {
         my $vars = {};
@@ -58,7 +57,22 @@ my $registry = ASRegistry->from_source_dir($source_dir);
 
         my $verbs = $vars->{verbs} = [];
         foreach my $verb (sort { $a->name cmp $b->name } @{$spec->verbs}) {
-            push @$verbs, verb_summary_for_template($verb);
+            push @$verbs, term_summary_for_template($verb);
+        }
+
+        my $object_types = $vars->{object_types} = [];
+        foreach my $object_type (sort { $a->name cmp $b->name } @{$spec->object_types}) {
+            push @$object_types, term_summary_for_template($object_type);
+        }
+
+        my $activity_components = $vars->{activity_components} = [];
+        foreach my $component (sort { $a->name cmp $b->name } @{$spec->activity_components}) {
+            push @$activity_components, component_summary_for_template($component);
+        }
+
+        my $object_components = $vars->{object_components} = [];
+        foreach my $component (sort { $a->name cmp $b->name } @{$spec->object_components}) {
+            push @$object_components, component_summary_for_template($component);
         }
 
         my $fn = "specs/".$spec->identifier;
@@ -77,7 +91,7 @@ sub spec_summary_for_template {
     return $ret;
 }
 
-sub verb_summary_for_template {
+sub term_summary_for_template {
     my ($verb) = @_;
 
     my $spec = $verb->spec;
@@ -85,9 +99,24 @@ sub verb_summary_for_template {
     my $ret = {};
     $ret->{name} = $verb->name;
     $ret->{identifier} = $verb->identifier;
-    $ret->{index_url} = "specs/".$spec->identifier."/verbs/".$verb->identifier."/";
+    $ret->{spec_url} = $verb->spec_url;
     $ret->{is_draft} = $verb->is_draft;
     $ret->{description} = $verb->description;
+    return $ret;
+}
+
+sub component_summary_for_template {
+    my ($component) = @_;
+
+    my $spec = $component->spec;
+
+    my $ret = {};
+    $ret->{name} = $component->name;
+    $ret->{json_property_name} = $component->json_property_name;
+    $ret->{json_spec_url} = $component->json_spec_url;
+    $ret->{spec_url} = $component->spec_url;
+    $ret->{is_draft} = $component->is_draft;
+    $ret->{description} = $component->description;
     return $ret;
 }
 

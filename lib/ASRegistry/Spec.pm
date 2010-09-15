@@ -10,7 +10,8 @@ package ASRegistry::Spec;
 use strict;
 use warnings;
 
-use ASRegistry::Verb;
+use ASRegistry::Term;
+use ASRegistry::Component;
 
 sub from_dict {
     my ($class, $dict) = @_;
@@ -25,7 +26,28 @@ sub from_dict {
     my $verbs = $self->{verbs} = [];
     if (my $verb_dicts = $dict->{verbs}) {
         foreach my $dict (@$verb_dicts) {
-            push @$verbs, ASRegistry::Verb->from_dict($dict, $self);
+            push @$verbs, ASRegistry::Term->from_dict($dict, $self);
+        }
+    }
+
+    my $object_types = $self->{object_types} = [];
+    if (my $object_type_dicts = $dict->{object_types}) {
+        foreach my $dict (@$object_type_dicts) {
+            push @$object_types, ASRegistry::Term->from_dict($dict, $self);
+        }
+    }
+
+    my $activity_components = $self->{activity_components} = [];
+    if (my $activity_component_dicts = $dict->{activity_components}) {
+        foreach my $dict (@$activity_component_dicts) {
+            push @$activity_components, ASRegistry::Component->from_dict($dict, $self);
+        }
+    }
+
+    my $object_components = $self->{object_components} = [];
+    if (my $object_component_dicts = $dict->{object_components}) {
+        foreach my $dict (@$object_component_dicts) {
+            push @$object_components, ASRegistry::Component->from_dict($dict, $self);
         }
     }
 
@@ -54,6 +76,18 @@ sub is_draft {
 
 sub verbs {
     return $_[0]->{verbs};
+}
+
+sub object_types {
+    return $_[0]->{object_types};
+}
+
+sub object_components {
+    return $_[0]->{object_components};
+}
+
+sub activity_components {
+    return $_[0]->{activity_components};
 }
 
 1;
