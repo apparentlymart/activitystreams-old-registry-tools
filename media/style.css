@@ -79,10 +79,10 @@ tr.even {
 }
 
 td.componentname, td.componentjson, td.termname, td.termidentifier, td.specdate {
-    width: 150px;
+    width: 100px;
 }
 td.componentspec, td.termspec {
-    width: 300px;
+    width: 150px;
 }
 
 aside.warning {
