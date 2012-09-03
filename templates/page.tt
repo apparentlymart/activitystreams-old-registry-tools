@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>[% IF page_title %][% page_title | html %] - [% END %]Activity Streams Registry</title>
-<base href="/">
-<link rel="stylesheet" type="text/css" href="/media/style.css">
-</head>
-<body>
-<header>
-<h1><a href="/">Activity Streams Registry</a></h1>
-</header>
-
-<section id="body">
+---
+layout: registry
+---
 [% IF page_title %]<h2>[% page_title | html %]</h2>[% END %]
 
 [% content %]
-</section>
-
-</body>
-</html>
